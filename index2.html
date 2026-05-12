@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <title>Фонд поддержки исламской культуры, науки и образования</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        green: { DEFAULT: '#0F6E56', light: '#1D9E75', bg: '#E1F5EE', dark: '#085041', deeper: '#04342C' },
+                        gold: { DEFAULT: '#BA7517', bg: '#FAEEDA', light: '#FAC775' },
+                    },
+                    fontFamily: {
+                        raleway: ['Raleway', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .progress {
+            width: 0%;
+            animation: fillProgress 5s linear forwards;
+        }
+
+        @keyframes fillProgress {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* Hamburger animation */
+        #hamburger.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        #hamburger span {
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        /* Slide transitions */
+        .slide {
+            position: absolute;
+            inset: 0;
+            transition: opacity 1s;
+        }
+
+        /* Nav active */
+        .nav-link.active {
+            background: white;
+            color: #0C6141 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 font-raleway">
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="sticky top-0 z-50 bg-[#0C6141] shadow-lg">
+        <div class="flex items-center justify-between px-4 sm:px-6 h-16 md:h-20">
+            <!-- Logo -->
+            <img src="images/logo.svg" alt="Logo" class="h-10 md:h-14 w-auto brightness-0 invert">
+
+            <!-- Desktop Nav -->
+            <ul class="hidden md:flex items-center space-x-3">
+                <li><a href="#home" data-key="nav_home"
+                        class="nav-link text-white border border-white/30 px-4 py-1.5 rounded-full text-base font-semibold transition hover:bg-white hover:text-[#0C6141]">Главная</a>
+                </li>
+                <li><a href="#about" data-key="nav_about"
+                        class="nav-link text-white border border-white/30 px-4 py-1.5 rounded-full text-base font-semibold transition hover:bg-white hover:text-[#0C6141]">О
+                        Фонде</a></li>
+                <li><a href="#activity" data-key="nav_activity"
+                        class="nav-link text-white border border-white/30 px-4 py-1.5 rounded-full text-base font-semibold transition hover:bg-white hover:text-[#0C6141]">Деятельность</a>
+                </li>
+                <li><a href="#contact" data-key="nav_contact"
+                        class="nav-link text-white border border-white/30 px-4 py-1.5 rounded-full text-base font-semibold transition hover:bg-white hover:text-[#0C6141]">Контакты</a>
+                </li>
+            </ul>
+
+            <!-- Desktop Right -->
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="flex items-center bg-white/10 rounded-full px-3 py-1.5">
+                    <input type="text" data-key="search_placeholder" placeholder="Поиск"
+                        class="bg-transparent border-none outline-none text-sm w-20 text-white placeholder-white/70">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white/70" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <button onclick="toggleLang()" id="lang-toggle"
+                    class="w-9 h-9 bg-white rounded-full text-[#0C6141] text-xs font-bold hover:bg-gold-light transition">EN</button>
+            </div>
+
+            <!-- Mobile Right: Lang + Hamburger -->
+            <div class="flex md:hidden items-center space-x-3">
+                <button onclick="toggleLang()" id="lang-toggle-mobile"
+                    class="w-8 h-8 bg-white rounded-full text-[#0C6141] text-xs font-bold">EN</button>
+                <button id="hamburger" onclick="toggleMenu()"
+                    class="flex flex-col justify-center items-center w-9 h-9 space-y-1.5">
+                    <span class="block w-6 h-0.5 bg-white rounded"></span>
+                    <span class="block w-6 h-0.5 bg-white rounded"></span>
+                    <span class="block w-6 h-0.5 bg-white rounded"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-[#085041] px-4">
+            <ul class="py-3 space-y-2">
+                <li><a href="#home" data-key="nav_home" onclick="closeMenu()"
+                        class="block text-white font-semibold py-2 px-4 rounded-xl hover:bg-white/10 transition">Главная</a>
+                </li>
+                <li><a href="#about" data-key="nav_about" onclick="closeMenu()"
+                        class="block text-white font-semibold py-2 px-4 rounded-xl hover:bg-white/10 transition">О
+                        Фонде</a></li>
+                <li><a href="#activity" data-key="nav_activity" onclick="closeMenu()"
+                        class="block text-white font-semibold py-2 px-4 rounded-xl hover:bg-white/10 transition">Деятельность</a>
+                </li>
+                <li><a href="#contact" data-key="nav_contact" onclick="closeMenu()"
+                        class="block text-white font-semibold py-2 px-4 rounded-xl hover:bg-white/10 transition">Контакты</a>
+                </li>
+            </ul>
+            <div class="pb-3 px-4">
+                <div class="flex items-center bg-white/10 rounded-full px-3 py-2">
+                    <input type="text" data-key="search_placeholder" placeholder="Поиск"
+                        class="bg-transparent border-none outline-none text-sm flex-1 text-white placeholder-white/70">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white/70" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="max-w-[1100px] mx-auto px-4 sm:px-6 mt-10 md:mt-20">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <!-- Text -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <p class="font-raleway font-bold uppercase tracking-tight leading-tight">
+                    <small class="text-[#145a32] text-2xl sm:text-3xl md:text-[45px]" data-key="hero_line1">Фонд
+                        поддержки</small><br>
+                    <span class="text-2xl sm:text-3xl md:text-[45px]" data-key="hero_line2">исламской культуры,<br>науки
+                        и образования</span>
+                </p>
+            </div>
+
+            <!-- Slider -->
+            <div class="w-full md:w-1/2 relative h-64 sm:h-80 md:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden">
+                <img src="images/img.jpg" class="slide w-full h-full object-cover opacity-100">
+                <img src="images/img (1).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (2).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (3).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (4).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (5).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (6).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (7).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (8).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (9).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (10).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (11).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (12).jpg" class="slide w-full h-full object-cover opacity-0">
+                <img src="images/img (13).jpg" class="slide w-full h-full object-cover opacity-0">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="max-w-[1100px] mx-auto px-4 sm:px-6 mt-14 md:mt-20">
+        <h2 class="text-[#0C6141] text-2xl sm:text-3xl md:text-[42px] font-bold mb-6 md:mb-10" data-key="about_title">О
+            Фонде</h2>
+
+        <!-- Top Card -->
+        <div class="relative overflow-hidden rounded-2xl md:rounded-[25px] min-h-[200px] md:h-[420px]">
+            <img src="images/bg-fone.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white/10 via-white/20 to-white/80">
+            </div>
+
+            <div class="relative z-10 flex flex-col md:flex-row items-end h-full">
+                <!-- Person image - hidden on mobile to save space -->
+                <div class="hidden md:block w-[320px] h-full flex-shrink-0">
+                    <img src="images/person.png" alt="" class="w-full h-full object-contain object-bottom">
+                </div>
+
+                <div class="p-5 md:absolute md:top-10 md:right-4 md:max-w-[650px] md:px-6">
+                    <p class="text-lg sm:text-2xl md:text-[30px] leading-snug font-bold text-[#333]"
+                        data-key="about_card_text">
+                        Фонд поддержки исламской культуры, науки и образования создан в 2007 году по поручению
+                        Президента России Владимира Путина
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div
+            class="mt-8 md:mt-12 space-y-5 md:space-y-8 text-base sm:text-xl md:text-[30px] leading-relaxed text-[#333] font-semibold">
+            <p data-key="about_p1">Фонд содействует реализации проектов по защите духовного суверенитета мусульманского
+                сообщества России и возрождению отечественной школы исламского богословия.</p>
+            <p data-key="about_p2">Фонд оказывает поддержку деятельности, направленной на развитие исламской культуры,
+                науки и образования, сохранение традиционных российских духовно-нравственных ценностей, воспитания
+                патриотизма, недопущения исламофобии, а также противодействие пропаганде экстремизма и терроризма.</p>
+        </div>
+    </section>
+
+
+    <!-- ===== GOALS SLIDER ===== -->
+    <section id="activity" class="mt-14 md:mt-20 overflow-hidden">
+        <div class="relative bg-[#0d6b45] min-h-[380px] md:h-[450px]">
+
+            <!-- Slides -->
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-100">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal1">
+                        Поддержка уставной и проектной деятельности исламских религиозных и некоммерческих организаций,
+                        а также исламских образовательных учреждений.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (1).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (3).png" alt=""><img src="images/slide (4).png"
+                                alt=""><img src="images/slide (5).png" alt=""><img src="images/slide (6).png"
+                                alt=""><img src="images/slide (7).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-0 pointer-events-none">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal2">
+                        Содействие в подготовке и переподготовке кадров для исламских образовательных и религиозных
+                        организаций, создание условий для возрождения российской исламской богословской школы.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (2).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (2).png" alt=""><img src="images/slide (4).png"
+                                alt=""><img src="images/slide (5).png" alt=""><img src="images/slide (6).png"
+                                alt=""><img src="images/slide (7).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-0 pointer-events-none">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal3">
+                        Системное противодействие распространению в Российской Федерации идеологии религиозного
+                        экстремизма и радикализма.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (3).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (2).png" alt=""><img src="images/slide (3).png"
+                                alt=""><img src="images/slide (5).png" alt=""><img src="images/slide (6).png"
+                                alt=""><img src="images/slide (7).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-0 pointer-events-none">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal4">
+                        Содействие религиозным, образовательным и иным некоммерческим организациям в осуществлении
+                        духовно-нравственного и патриотического воспитания детей и молодежи.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (4).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (2).png" alt=""><img src="images/slide (3).png"
+                                alt=""><img src="images/slide (4).png" alt=""><img src="images/slide (6).png"
+                                alt=""><img src="images/slide (7).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-0 pointer-events-none">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal5">
+                        Содействие деятельности исламских научно-просветительских центров, женских религиозных клубов и
+                        молодежных организаций.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (5).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (2).png" alt=""><img src="images/slide (3).png"
+                                alt=""><img src="images/slide (4).png" alt=""><img src="images/slide (5).png"
+                                alt=""><img src="images/slide (7).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="slide2 max-w-[1100px] mx-auto px-4 sm:px-6 py-8 absolute inset-0 text-white flex flex-col justify-between transition-all duration-700 opacity-0 pointer-events-none">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-[42px] font-bold mb-4 md:mb-8" data-key="goals_title">Цели
+                        Фонда</h2>
+                    <p class="text-base sm:text-xl md:text-[30px] leading-relaxed font-semibold" data-key="goal6">
+                        Реализация программы материальной поддержки начинающих священнослужителей, преподавателей и
+                        студентов исламских образовательных учреждений.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2"><img src="images/Group 13 (6).png" alt=""
+                                class="w-10 h-10 md:w-[60px] md:h-[60px]"><span
+                                class="text-[#f0c14b] text-lg font-semibold">/6</span></div>
+                        <div class="flex gap-2"><img src="images/slide (2).png" alt=""><img src="images/slide (3).png"
+                                alt=""><img src="images/slide (4).png" alt=""><img src="images/slide (5).png"
+                                alt=""><img src="images/slide (6).png" alt=""></div>
+                    </div>
+                    <div class="w-full h-[3px] bg-white/25 rounded-full overflow-hidden">
+                        <div class="progress h-full bg-[#f0c14b]"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===== FOUNDERS ===== -->
+    <section class="max-w-[1100px] mx-auto px-4 sm:px-6 mt-14 md:mt-20">
+        <h2 class="text-[#0C6141] text-2xl sm:text-3xl md:text-[42px] font-bold mb-6 md:mb-10"
+            data-key="founders_title">Учредители</h2>
+
+        <!-- Main founder -->
+        <div style="box-shadow: 6px 6px 42px 0px #0000001A;"
+            class="bg-white rounded-2xl p-5 md:p-6 mb-5 flex items-center space-x-4 md:space-x-6">
+            <div class="w-24 h-28 sm:w-36 sm:h-40 md:w-[240px] md:h-[280px] flex-shrink-0">
+                <img src="images/Founders 1.png" alt="" class="w-full h-full object-contain">
+            </div>
+            <p class="text-base sm:text-xl md:text-[30px] leading-snug text-[#0C6141] font-bold" data-key="founder1">
+                Государство – Российская Федерация</p>
+        </div>
+
+        <!-- Grid founders -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div style="box-shadow: 6px 6px 42px 0px #0000001A;"
+                class="bg-white rounded-2xl p-5 md:p-6 flex flex-col justify-between">
+                <p class="text-base sm:text-lg md:text-[30px] leading-snug text-[#0C6141] font-bold mb-4"
+                    data-key="founder2">Центральное Духовное управление мусульман России</p>
+                <div class="w-24 h-28 sm:w-32 sm:h-36 md:w-[240px] md:h-[280px] mx-auto">
+                    <img src="images/Founders 2.png" alt="" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+            <div style="box-shadow: 6px 6px 42px 0px #0000001A;"
+                class="bg-white rounded-2xl p-5 md:p-6 flex flex-col justify-between">
+                <p class="text-base sm:text-lg md:text-[30px] leading-snug text-[#0C6141] font-bold mb-4"
+                    data-key="founder3">Совет муфтиев России</p>
+                <div class="w-24 h-28 sm:w-32 sm:h-36 md:w-[240px] md:h-[280px] mx-auto">
+                    <img src="images/Founders 3.png" alt="" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+            <div style="box-shadow: 6px 6px 42px 0px #0000001A;"
+                class="bg-white rounded-2xl p-5 md:p-6 flex flex-col justify-between">
+                <p class="text-base sm:text-lg md:text-[30px] leading-snug text-[#0C6141] font-bold mb-4"
+                    data-key="founder4">Координационный центр мусульман Северного Кавказа</p>
+                <div class="w-24 h-28 sm:w-32 sm:h-36 md:w-[240px] md:h-[280px] mx-auto">
+                    <img src="images/Founders 4.png" alt="" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+            <div style="box-shadow: 6px 6px 42px 0px #0000001A;"
+                class="bg-white rounded-2xl p-5 md:p-6 flex flex-col justify-between">
+                <p class="text-base sm:text-lg md:text-[30px] leading-snug text-[#0C6141] font-bold mb-4"
+                    data-key="founder5">Международная исламская миссия</p>
+                <div class="w-24 h-28 sm:w-32 sm:h-36 md:w-[240px] md:h-[280px] mx-auto">
+                    <img src="images/Founders 5.png" alt="" class="w-full h-full object-contain">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===== BANNER ===== -->
+    <section
+        style="background-image: url(images/bg-green.png); background-size: cover; background-repeat: no-repeat; background-position: center;"
+        class="mt-14 md:mt-20">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 py-10 md:py-16 md:h-[250px] flex items-center justify-center">
+            <p class="font-bold text-base sm:text-xl md:text-[32px] leading-snug text-white text-center md:text-left"
+                data-key="banner_text">
+                Фонд является единственной в России организацией с государственным участием, которая оказывает поддержку
+                деятельности мусульманских организаций
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ===== DIRECTIONS ===== -->
+    <section class="max-w-[1100px] mx-auto px-4 sm:px-6 mt-14 md:mt-20">
+        <h2 class="text-[#0C6141] text-2xl sm:text-3xl md:text-[42px] font-bold mb-6 md:mb-10"
+            data-key="directions_title">Основные направления<br>деятельности Фонда включают:</h2>
+
+        <div class="space-y-5">
+
+            <!-- Dir 1 (full width) -->
+            <div
+                class="bg-[#0C6141] rounded-2xl md:rounded-[30px] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">01</span>
+                <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir1_title">
+                    Образовательные инициативы</h3>
+                <div class="space-y-4 md:space-y-6">
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir1_sub1_title">Подготовка специалистов:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir1_sub1_text">содействие формированию системы подготовки и переподготовки
+                            специалистов с углубленным знанием истории и культуры ислама.</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir1_sub2_title">Поддержка исламских образовательных организаций:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir1_sub2_text">поддержка многоуровневой системы исламского образования и
+                            содействие проектам, направленным на возрождение отечественной школы исламского богословия.
+                        </p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir1_sub3_title">Повышение квалификации преподавателей:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir1_sub3_text">реализация дополнительных профессиональных программ на базе
+                            светских и исламских вузов.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dirs 2 & 3 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div
+                    class="bg-[#0C6141] rounded-2xl md:rounded-[2rem] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                    <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">02</span>
+                    <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir2_title">Научные
+                        исследования</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir2_sub1_title">Научные проекты:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir2_sub1_text">финансирование академических исследований, посвященных языку,
+                                истории и культуре ислама.</p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir2_sub2_title">Издательская деятельность:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir2_sub2_text">поддержка научных периодических изданий, учебных пособий,
+                                литературы.</p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir2_sub3_title">Мероприятия:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir2_sub3_text">организация конференций, круглых столов, международных
+                                форумов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-[#0C6141] rounded-2xl md:rounded-[2rem] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                    <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">03</span>
+                    <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir3_title">
+                        Культурные проекты</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir3_sub1_title">Выставки и фестивали:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir3_sub1_text">организация выставок, фестивалей и иных культурных
+                                мероприятий, направленных на популяризацию исламского искусства и культуры.</p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir3_sub2_title">Сохранение наследия:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir3_sub2_text">участие в проектах по сохранению и реставрации памятников
+                                исламской архитектуры и искусства.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dir 4 (full width) -->
+            <div
+                class="bg-[#0C6141] rounded-2xl md:rounded-[30px] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">04</span>
+                <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir4_title">Социальные
+                    инициативы</h3>
+                <div class="space-y-4 md:space-y-6">
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir4_sub1_title">Гражданское единство:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir4_sub1_text">содействие деятельности мусульманских организаций, направленной на
+                            консолидацию общества и укрепление государства.</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir4_sub2_title">Межкультурный диалог:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir4_sub2_text">реализация программ, укрепляющих взаимопонимание между
+                            представителями различных культур и конфессий.</p>
+                    </div>
+                    <div>
+                        <p
+                            class="text-[#f2c94c] flex items-start text-sm sm:text-lg md:text-[30px] font-bold mb-2 md:mb-4">
+                            <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                    class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                            <span data-key="dir4_sub3_title">Традиционные ценности:</span>
+                        </p>
+                        <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                            data-key="dir4_sub3_text">поддержка мероприятий, направленных на укрепление роли семьи и
+                            традиционных духовно-нравственных ценностей.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dirs 5 & 6 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div
+                    class="bg-[#0C6141] rounded-2xl md:rounded-[2rem] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                    <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">05</span>
+                    <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir5_title">
+                        Информационная деятельность</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir5_sub1_title">Воспитание:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir5_sub1_text">содействие организациям в духовно-нравственном и
+                                патриотическом воспитании молодёжи.</p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir5_sub2_title">Противодействие радикализации:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir5_sub2_text">поддержка инициатив против экстремизма и радикализма в России.
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir5_sub3_title">Медиапроекты:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir5_sub3_text">поддержка документальных фильмов, подкастов, телепередач и
+                                цифровых ресурсов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-[#0C6141] rounded-2xl md:rounded-[2rem] p-5 sm:p-7 md:p-8 relative overflow-hidden text-white">
+                    <span class="absolute top-3 right-5 text-5xl md:text-6xl font-black opacity-20">06</span>
+                    <h3 class="text-lg sm:text-2xl md:text-[32px] font-bold mb-4 md:mb-6" data-key="dir6_title">
+                        Международное сотрудничество</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir6_sub1_title">Поддержка соотечественников:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir6_sub1_text">защита прав российских соотечественников в странах СНГ и мире.
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir6_sub2_title">Международные проекты:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir6_sub2_text">Фонд выступает финансовым посредником при реализации
+                                совместных проектов с иностранными государствами.</p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[#f2c94c] flex items-start text-sm sm:text-base md:text-[30px] font-bold mb-2">
+                                <span class="mr-2 mt-1 flex-shrink-0"><img src="images/Vector 2 (1).png" alt=""
+                                        class="w-4 h-4 md:w-[25px] md:h-[25px]"></span>
+                                <span data-key="dir6_sub3_title">Программы обмена:</span>
+                            </p>
+                            <p class="ml-6 text-sm sm:text-base md:text-[28px] opacity-90 leading-relaxed font-bold"
+                                data-key="dir6_sub3_text">академические и культурные программы для студентов, учёных и
+                                культурных деятелей.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===== GENERAL INFO ===== -->
+    <section id="contact" class="max-w-[1100px] mx-auto px-4 sm:px-6 mt-14 md:mt-20">
+        <h2 class="text-[#0C6141] text-2xl sm:text-3xl md:text-[42px] font-bold mb-6 md:mb-10" data-key="info_title">
+            Общие сведения</h2>
+
+        <div class="space-y-6 text-[#333333]">
+            <div>
+                <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1" data-key="info_fullname_label">Полное
+                    наименование организации:</p>
+                <p class="font-medium text-base sm:text-xl md:text-[30px] leading-snug" data-key="info_fullname_val">
+                    ФОНД ПОДДЕРЖКИ ИСЛАМСКОЙ КУЛЬТУРЫ, НАУКИ И ОБРАЗОВАНИЯ</p>
+            </div>
+            <div>
+                <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1" data-key="info_form_label">
+                    Организационно-правовая форма:</p>
+                <p class="font-medium text-base sm:text-xl md:text-[30px] leading-snug" data-key="info_form_val">Фонды
+                    (код 70400 по ОКОПФ)</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                    <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1">ИНН:</p>
+                    <p class="font-medium text-base sm:text-xl md:text-[30px]">7704273247</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1">КПП:</p>
+                    <p class="font-medium text-base sm:text-xl md:text-[30px]">770401001</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1">ОГРН:</p>
+                    <p class="font-medium text-base sm:text-xl md:text-[30px]">1077799001048</p>
+                </div>
+            </div>
+            <div>
+                <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1" data-key="info_address_label">
+                    Юридический адрес:</p>
+                <p class="font-medium text-base sm:text-xl md:text-[30px] leading-snug" data-key="info_address_val">
+                    119034, Г. Москва, ул. Остоженка, д. 49</p>
+            </div>
+            <div>
+                <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1" data-key="info_activity_label">Вид
+                    деятельности:</p>
+                <p class="font-medium text-base sm:text-xl md:text-[30px] leading-snug" data-key="info_activity_val">
+                    Деятельность библиотек, архивов, музеев и прочих объектов культуры (код по ОКВЭД 91.0)</p>
+            </div>
+            <div>
+                <p class="font-semibold text-base sm:text-xl md:text-[30px] mb-1" data-key="info_status_label">Статус
+                    организации:</p>
+                <p class="font-medium text-base sm:text-xl md:text-[30px] leading-snug" data-key="info_status_val">
+                    некоммерческая унитарная, действующая</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="w-full h-px bg-gray-200 my-12 md:my-20"></div>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="max-w-[1100px] mx-auto px-4 sm:px-6 pb-12 md:pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+
+            <div class="space-y-6 flex flex-col">
+                <img src="images/logo.svg" alt="logo" class="w-40 md:w-[260px] h-auto">
+
+                <div class="flex items-center space-x-3 flex-wrap gap-y-2">
+                    <a href="#"
+                        class="w-10 h-10 bg-[#006341] rounded-lg flex items-center justify-center text-white p-1.5">
+                        <img src="images/icon 1.png" alt="wb" class="w-full h-full object-contain">
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 bg-[#006341] rounded-lg flex items-center justify-center text-white p-1.5">
+                        <img src="images/icon 2.png" alt="telegram" class="w-full h-full object-contain">
+                    </a>
+                    <a href="mailto:Info@islamfund.ru"
+                        class="text-gray-800 font-semibold text-base md:text-[24px] hover:text-[#0C6141]">Info@islamfund.ru</a>
+                </div>
+
+                <div class="space-y-1">
+                    <p class="text-gray-800 font-semibold text-base md:text-[24px]">+7 (495) 795-55-93</p>
+                    <p class="text-gray-800 font-semibold text-base md:text-[24px]">+7 (495) 795-55-94</p>
+                </div>
+
+                <div>
+                    <h4 class="text-gray-800 font-semibold text-base md:text-[24px] mb-1" data-key="footer_legal_addr">
+                        Юридический адрес:</h4>
+                    <p class="text-gray-600 text-sm md:text-base">119034, г. Москва, ул. Остоженка, д.49</p>
+                </div>
+            </div>
+
+            <div class="space-y-5 flex flex-col">
+                <div
+                    class="relative w-full h-48 sm:h-64 md:h-[250px] rounded-2xl md:rounded-3xl overflow-hidden shadow-inner bg-gray-100">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?ll=37.598285%2C55.739768&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzAwMDA0NRJK0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsIDEt0Lkg0JfQsNGH0LDRgtGM0LXQstGB0LrQuNC5INC_0LXRgNC10YPQu9C-0LosIDQuNCI%2F&z=16"
+                        width="100%" height="100%" frameborder="0" allowfullscreen="true"
+                        class="grayscale-[20%]"></iframe>
+                </div>
+                <div>
+                    <h4 class="text-gray-800 font-semibold text-base md:text-[24px] mb-1" data-key="footer_actual_addr">
+                        Фактический адрес:</h4>
+                    <p class="text-gray-600 text-sm md:text-base">119034, г. Москва, 1-й Зачатьевский пер., д.4, оф. 4
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('hamburger');
+            menu.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('mobile-menu').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('open');
+        }
+
+        // Translations
+        const T = {
+            ru: {
+                page_title: 'Фонд поддержки исламской культуры, науки и образования',
+                nav_home: 'Главная', nav_about: 'О Фонде', nav_activity: 'Деятельность', nav_contact: 'Контакты',
+                search_placeholder: 'Поиск',
+                hero_line1: 'Фонд поддержки',
+                hero_line2: 'исламской культуры,<br>науки и образования',
+                about_title: 'О Фонде',
+                about_card_text: 'Фонд поддержки исламской культуры, науки и образования создан в 2007 году по поручению Президента России Владимира Путина',
+                about_p1: 'Фонд содействует реализации проектов по защите духовного суверенитета мусульманского сообщества России и возрождению отечественной школы исламского богословия.',
+                about_p2: 'Фонд оказывает поддержку деятельности, направленной на развитие исламской культуры, науки и образования, сохранение традиционных российских духовно-нравственных ценностей, воспитания патриотизма, недопущения исламофобии, а также противодействие пропаганде экстремизма и терроризма.',
+                goals_title: 'Цели Фонда',
+                goal1: 'Поддержка уставной и проектной деятельности исламских религиозных и некоммерческих организаций, а также исламских образовательных учреждений.',
+                goal2: 'Содействие в подготовке и переподготовке кадров для исламских образовательных и религиозных организаций, создание условий для возрождения российской исламской богословской школы.',
+                goal3: 'Системное противодействие распространению в Российской Федерации идеологии религиозного экстремизма и радикализма.',
+                goal4: 'Содействие религиозным, образовательным и иным некоммерческим организациям в осуществлении духовно-нравственного и патриотического воспитания детей и молодежи.',
+                goal5: 'Содействие деятельности исламских научно-просветительских центров, женских религиозных клубов и молодежных организаций.',
+                goal6: 'Реализация программы материальной поддержки начинающих священнослужителей, преподавателей и студентов исламских образовательных учреждений.',
+                founders_title: 'Учредители',
+                founder1: 'Государство – Российская Федерация',
+                founder2: 'Центральное Духовное управление мусульман России',
+                founder3: 'Совет муфтиев России',
+                founder4: 'Координационный центр мусульман Северного Кавказа',
+                founder5: 'Международная исламская миссия',
+                banner_text: 'Фонд является единственной в России организацией с государственным участием, которая оказывает поддержку деятельности мусульманских организаций',
+                directions_title: 'Основные направления<br>деятельности Фонда включают:',
+                dir1_title: 'Образовательные инициативы', dir1_sub1_title: 'Подготовка специалистов:', dir1_sub1_text: 'содействие формированию системы подготовки и переподготовки специалистов с углубленным знанием истории и культуры ислама.', dir1_sub2_title: 'Поддержка исламских образовательных организаций:', dir1_sub2_text: 'поддержка многоуровневой системы исламского образования и содействие проектам, направленным на возрождение отечественной школы исламского богословия.', dir1_sub3_title: 'Повышение квалификации преподавателей:', dir1_sub3_text: 'реализация дополнительных профессиональных программ на базе светских и исламских вузов.',
+                dir2_title: 'Научные исследования', dir2_sub1_title: 'Научные проекты:', dir2_sub1_text: 'финансирование академических исследований, посвященных языку, истории и культуре ислама.', dir2_sub2_title: 'Издательская деятельность:', dir2_sub2_text: 'поддержка научных периодических изданий, учебных пособий, литературы.', dir2_sub3_title: 'Мероприятия:', dir2_sub3_text: 'организация конференций, круглых столов, международных форумов.',
+                dir3_title: 'Культурные проекты', dir3_sub1_title: 'Выставки и фестивали:', dir3_sub1_text: 'организация выставок, фестивалей и иных культурных мероприятий, направленных на популяризацию исламского искусства и культуры.', dir3_sub2_title: 'Сохранение наследия:', dir3_sub2_text: 'участие в проектах по сохранению и реставрации памятников исламской архитектуры и искусства.',
+                dir4_title: 'Социальные инициативы', dir4_sub1_title: 'Гражданское единство:', dir4_sub1_text: 'содействие деятельности мусульманских организаций, направленной на консолидацию общества и укрепление государства.', dir4_sub2_title: 'Межкультурный диалог:', dir4_sub2_text: 'реализация программ, укрепляющих взаимопонимание между представителями различных культур и конфессий.', dir4_sub3_title: 'Традиционные ценности:', dir4_sub3_text: 'поддержка мероприятий, направленных на укрепление роли семьи и традиционных духовно-нравственных ценностей.',
+                dir5_title: 'Информационная деятельность', dir5_sub1_title: 'Воспитание:', dir5_sub1_text: 'содействие организациям в духовно-нравственном и патриотическом воспитании молодёжи.', dir5_sub2_title: 'Противодействие радикализации:', dir5_sub2_text: 'поддержка инициатив против экстремизма и радикализма в России.', dir5_sub3_title: 'Медиапроекты:', dir5_sub3_text: 'поддержка документальных фильмов, подкастов, телепередач и цифровых ресурсов.',
+                dir6_title: 'Международное сотрудничество', dir6_sub1_title: 'Поддержка соотечественников:', dir6_sub1_text: 'защита прав российских соотечественников в странах СНГ и мире.', dir6_sub2_title: 'Международные проекты:', dir6_sub2_text: 'Фонд выступает финансовым посредником при реализации совместных проектов с иностранными государствами.', dir6_sub3_title: 'Программы обмена:', dir6_sub3_text: 'академические и культурные программы для студентов, учёных и культурных деятелей.',
+                info_title: 'Общие сведения', info_fullname_label: 'Полное наименование организации:', info_fullname_val: 'ФОНД ПОДДЕРЖКИ ИСЛАМСКОЙ КУЛЬТУРЫ, НАУКИ И ОБРАЗОВАНИЯ', info_form_label: 'Организационно-правовая форма:', info_form_val: 'Фонды (код 70400 по ОКОПФ)', info_address_label: 'Юридический адрес:', info_address_val: '119034, Г. Москва, ул. Остоженка, д. 49', info_activity_label: 'Вид деятельности:', info_activity_val: 'Деятельность библиотек, архивов, музеев и прочих объектов культуры (код по ОКВЭД 91.0)', info_status_label: 'Статус организации:', info_status_val: 'некоммерческая унитарная, действующая',
+                footer_legal_addr: 'Юридический адрес:', footer_actual_addr: 'Фактический адрес:',
+            },
+            en: {
+                page_title: 'Foundation for Support of Islamic Culture, Science and Education',
+                nav_home: 'Home', nav_about: 'About', nav_activity: 'Activities', nav_contact: 'Contacts',
+                search_placeholder: 'Search',
+                hero_line1: 'Foundation for Support of',
+                hero_line2: 'Islamic Culture,<br>Science and Education',
+                about_title: 'About the Foundation',
+                about_card_text: 'The Foundation for Support of Islamic Culture, Science and Education was established in 2007 by order of Russian President Vladimir Putin',
+                about_p1: "The Foundation promotes projects aimed at protecting the spiritual sovereignty of Russia's Muslim community and reviving the domestic school of Islamic theology.",
+                about_p2: 'The Foundation supports activities focused on the development of Islamic culture, science and education, preservation of traditional Russian spiritual and moral values, patriotism, prevention of Islamophobia, and countering extremism.',
+                goals_title: 'Foundation Goals',
+                goal1: 'Supporting the statutory and project activities of Islamic religious and non-profit organizations, as well as Islamic educational institutions.',
+                goal2: 'Assisting in training and retraining personnel for Islamic educational and religious organizations, creating conditions for reviving the Russian Islamic theological school.',
+                goal3: 'Systematic countering of the spread of religious extremism and radicalism ideology in the Russian Federation.',
+                goal4: 'Assisting religious, educational and other non-profit organizations in spiritual, moral and patriotic education of children and youth.',
+                goal5: "Supporting the activities of Islamic educational centers, women's religious clubs and youth organizations.",
+                goal6: 'Implementing a program of material support for beginner clergy, teachers and students of Islamic educational institutions.',
+                founders_title: 'Founders',
+                founder1: 'The State – the Russian Federation',
+                founder2: 'Central Spiritual Administration of Muslims of Russia',
+                founder3: 'Council of Muftis of Russia',
+                founder4: 'Coordination Center of Muslims of the North Caucasus',
+                founder5: 'International Islamic Mission',
+                banner_text: 'The Foundation is the only state-participating organization in Russia that supports the activities of Muslim organizations',
+                directions_title: "Main areas of<br>the Foundation's activities include:",
+                dir1_title: 'Educational Initiatives', dir1_sub1_title: 'Training of specialists:', dir1_sub1_text: 'promoting development of a training system for specialists with in-depth knowledge of Islamic history and culture.', dir1_sub2_title: 'Support for Islamic educational organizations:', dir1_sub2_text: 'supporting the multi-level Islamic education system and reviving the domestic school of Islamic theology.', dir1_sub3_title: 'Professional development:', dir1_sub3_text: 'implementing additional professional programs at secular and Islamic universities.',
+                dir2_title: 'Scientific Research', dir2_sub1_title: 'Scientific projects:', dir2_sub1_text: 'funding academic research dedicated to the language, history and culture of Islam.', dir2_sub2_title: 'Publishing:', dir2_sub2_text: 'supporting academic journals, textbooks, religious and popular science literature.', dir2_sub3_title: 'Events:', dir2_sub3_text: 'organizing conferences, round tables, international forums.',
+                dir3_title: 'Cultural Projects', dir3_sub1_title: 'Exhibitions and festivals:', dir3_sub1_text: 'organizing exhibitions, festivals and cultural events promoting Islamic art and culture.', dir3_sub2_title: 'Heritage preservation:', dir3_sub2_text: 'participating in projects for preserving and restoring Islamic architectural monuments.',
+                dir4_title: 'Social Initiatives', dir4_sub1_title: 'Civil unity:', dir4_sub1_text: 'supporting Muslim organizations aimed at consolidating society and strengthening the state.', dir4_sub2_title: 'Intercultural dialogue:', dir4_sub2_text: 'implementing programs that strengthen mutual understanding between different cultures and faiths.', dir4_sub3_title: 'Traditional values:', dir4_sub3_text: 'supporting activities aimed at strengthening the family role and traditional spiritual and moral values.',
+                dir5_title: 'Information Activities', dir5_sub1_title: 'Education:', dir5_sub1_text: "assisting organizations in the spiritual, moral and patriotic education of youth.", dir5_sub2_title: 'Countering radicalization:', dir5_sub2_text: 'supporting initiatives against extremism and radicalism in Russia.', dir5_sub3_title: 'Media projects:', dir5_sub3_text: 'supporting documentaries, podcasts, television programs and digital resources.',
+                dir6_title: 'International Cooperation', dir6_sub1_title: 'Support for compatriots:', dir6_sub1_text: 'protecting the rights of Russian compatriots in CIS countries and worldwide.', dir6_sub2_title: 'International projects:', dir6_sub2_text: 'The Foundation acts as a financial intermediary for joint projects with foreign states.', dir6_sub3_title: 'Exchange programs:', dir6_sub3_text: 'academic and cultural exchange programs for students, scholars and cultural figures.',
+                info_title: 'General Information', info_fullname_label: 'Full name of the organization:', info_fullname_val: 'FOUNDATION FOR SUPPORT OF ISLAMIC CULTURE, SCIENCE AND EDUCATION', info_form_label: 'Legal form:', info_form_val: 'Foundation (code 70400 per OKOPF)', info_address_label: 'Legal address:', info_address_val: '119034, Moscow, Ostozhenka St., 49', info_activity_label: 'Type of activity:', info_activity_val: 'Activities of libraries, archives, museums and other cultural facilities (OKVED code 91.0)', info_status_label: 'Organization status:', info_status_val: 'Non-profit unitary, active',
+                footer_legal_addr: 'Legal address:', footer_actual_addr: 'Actual address:',
+            }
+        };
+
+        let currentLang = 'ru';
+
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            setLang(currentLang);
+        }
+
+        function setLang(lang) {
+            const d = T[lang];
+            document.title = d.page_title;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const k = el.getAttribute('data-key');
+                if (d[k] !== undefined) {
+                    if (el.tagName === 'INPUT') el.placeholder = d[k];
+                    else el.innerHTML = d[k];
+                }
+            });
+            const label = lang === 'ru' ? 'EN' : 'RU';
+            document.getElementById('lang-toggle').textContent = label;
+            document.getElementById('lang-toggle-mobile').textContent = label;
+        }
+
+        // Hero image slider
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('opacity-100');
+            slides[current].classList.add('opacity-0');
+            current = (current + 1) % slides.length;
+            slides[current].classList.remove('opacity-0');
+            slides[current].classList.add('opacity-100');
+        }, 5000);
+
+        // Goals slider
+        const slides2 = document.querySelectorAll('.slide2');
+        const progresses = document.querySelectorAll('.progress');
+        let current2 = 0;
+
+        function startSlider() {
+            progresses.forEach(p => { p.style.animation = 'none'; p.offsetHeight; p.style.animation = 'fillProgress 5s linear forwards'; });
+            setInterval(() => {
+                slides2[current2].classList.remove('opacity-100');
+                slides2[current2].classList.add('opacity-0', 'pointer-events-none');
+                current2 = (current2 + 1) % slides2.length;
+                slides2[current2].classList.remove('opacity-0', 'pointer-events-none');
+                slides2[current2].classList.add('opacity-100');
+                progresses[current2].style.animation = 'none';
+                progresses[current2].offsetHeight;
+                progresses[current2].style.animation = 'fillProgress 5s linear forwards';
+            }, 5000);
+        }
+        startSlider();
+    </script>
+
+</body>
+
+</html>
